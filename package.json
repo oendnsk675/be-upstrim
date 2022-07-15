@@ -1,5 +1,5 @@
 {
-  "name": "jest-expressjs",
+  "name": "xen-node",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -11,7 +11,12 @@
     "serve": "nodemon server.js",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
-  "keywords": ["expressjs", "jest", "supertest", "sequelize"],
+  "keywords": [
+    "expressjs",
+    "jest",
+    "supertest",
+    "sequelize"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -24,7 +29,8 @@
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
-    "sequelize": "^6.17.0"
+    "sequelize": "^6.17.0",
+    "xendit-node": "^1.21.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.1.1",
