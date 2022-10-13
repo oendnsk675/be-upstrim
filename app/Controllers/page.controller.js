@@ -4,7 +4,7 @@ const { page: Page, User } = require('../models')
 const getMyPage = (req, res) => {
     
     try {
-        Page.findOne({
+        Page.findAll({
             where: {
                 "user_id": req.userId
             }
@@ -25,34 +25,45 @@ const getMyPage = (req, res) => {
     
 }
 
-const createOrUpdatePage = (req, res) => {
+const createPage = (req, res) => {
+    try {
+        req.body["user_id"] = req.userId
+
+        Page.create(req.body).then(data => {
+            return res.status(200).json({
+                msg: "Success create page data",
+                data
+            })
+        })
+    } catch (error) {
+        res.status(500).json({
+            msg: "Internal server error"
+        })
+    }
+}
+
+const updatePage = (req, res) => {
 
     try {
         Page.findOne({
             where: {
-                "user_id": req.userId
+                "id": req.body.id_page,
+                "user_id": req.userId,
             }
         }).then(obj => {
 
             if (obj) {
                 obj.update(req.body).then(data => {
-                    res.status(200).json({
+                    return res.status(200).json({
                         msg: "Success update page data",
                         data
                     })
                 })
-                return 
-            }
-
-            req.body["user_id"] = req.userId
-
-            Page.create(req.body).then(data => {
-                res.status(200).json({
-                    msg: "Success create page data",
-                    data
+            }else{
+                res.status(401).json({
+                    msg: "Unauthorized"
                 })
-            })
-            return
+            }
         })
     } catch (error) {
         res.status(500).json({
@@ -64,30 +75,43 @@ const createOrUpdatePage = (req, res) => {
 
 const getPage = (req, res) => {
     try {
-        
-        User.findOne({
-            where: {username: req.params.username},
-            attributes: ['id']
-        }).then(user => {
-            Page.findOne({
-                where: {
-                    "user_id": user.id
-                }
-            }).then(data => {
-                
-                res.status(200).json({
-                    msg: "Success retrieve page data",
-                    data
-                })
-            })
-        }).catch(error => {
-            res.status(500).json({
-                "msg": "Internal server error"
+
+        Page.findOne({
+            where: {
+                "id": req.params.id_page
+            }
+        }).then(data => {
+            return res.status(200).json({
+                msg: "Success retrieve page data",
+                data
             })
         })
-        
-        
-        return
+
+    } catch (error) {
+        return res.status(500).json({
+            msg: "Internal server error"
+        })
+    }
+}
+
+const deletePage = (req, res) => {
+    try {
+        Page.destroy({
+            where: {
+                "id": req.params.id_page,
+                "user_id": req.userId,
+            }
+        }).then(data => {
+            if(data) {
+                return res.status(200).json({
+                    msg: "Success delete page"
+                })
+            }else{
+                res.status(401).json({
+                    msg: "Unauthorized"
+                })
+            }
+        })
     } catch (error) {
         return res.status(500).json({
             msg: "Internal server error"
@@ -97,6 +121,8 @@ const getPage = (req, res) => {
 
 module.exports = {
     getMyPage,
-    createOrUpdatePage,
+    createPage,
+    updatePage,
     getPage,
+    deletePage,
 }
