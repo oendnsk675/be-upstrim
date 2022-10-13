@@ -8,7 +8,7 @@
     "test-coverage": "cross-env NODE_ENV=test jest --forceExit --coverage",
     "pretest": "cross-env NODE_ENV=test npm run db:reset",
     "db:create:test": "cross-env NODE_ENV=test npx sequelize-cli db:create",
-    "serve": "nodemon server.js",
+    "dev": "nodemon server.js",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "keywords": [
@@ -21,13 +21,17 @@
   "license": "ISC",
   "dependencies": {
     "@sequelize/core": "^7.0.0-alpha.10",
+    "axios": "^1.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
+    "custom-uuid": "^3.0.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
+    "midtrans-client": "^1.3.1",
+    "nanoid": "^4.0.0",
     "pg": "^8.7.3",
     "sequelize": "^6.17.0",
     "xendit-node": "^1.21.4"

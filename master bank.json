@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Bank Negara Indonesia (BNI)",
+        "code": "BNI",
+        "type": "Bank"
+    },
+    {
+        "name": "Bank Central Asia (BCA)",
+        "code": "BCA",
+        "type": "Bank"
+    },
+    {
+        "name": "Bank Rakyat Indonesia (BRI)",
+        "code": "BRI",
+        "type": "Bank"
+    },
+    {
+        "name": "Gopay",
+        "code": "GOPAY",
+        "type": "E-Wallet"
+    },
+    {
+        "name": "OVO",
+        "code": "OVO",
+        "type": "E-Wallet"
+    },
+    {
+        "name": "DANA",
+        "code": "DANA",
+        "type": "E-Wallet"
+    },
+]

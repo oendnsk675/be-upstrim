@@ -7,7 +7,11 @@ module.exports = (express, app, default_router = '/api') => {
 
     // invoice
     // create
-    router.post('/invoice', XenditController.create)
+    router.post('/invoice', [verifyToken], XenditController.createInvoice)
+    router.post('/invoice/callback', XenditController.invoiceCallback)
+
+    router.post('/disbursement', [verifyToken], XenditController.disbursement)
+    router.post('/disbursement/callback', XenditController.disbursementCallback)
 
     app.use(default_router, router)
 }

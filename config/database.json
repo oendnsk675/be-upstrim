@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": "cozy190900",
-    "database": "tasktodo_development",
+    "database": "upstrim_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "cozy190900",
-    "database": "tasktodo_test",
+    "database": "upstrim_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "cozy190900",
-    "database": "tasktodo_production",
+    "database": "upstrim_production",
     "dialect": "postgres",
     "dialectOptions": {
       "ssl": {

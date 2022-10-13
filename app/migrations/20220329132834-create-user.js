@@ -9,16 +9,56 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       username: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      phone: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      avatar: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      role: {
+        type: Sequelize.ENUM('admin', 'user'),
+        defaultValue: 'user'
+      },
+      instagram: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      facebook: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      twiter: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      google_id: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      facebook_id: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      twiter_id: {
+        type: Sequelize.STRING,
+        allowNull: true
       },
       createdAt: {
         allowNull: false,
